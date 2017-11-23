@@ -1,5 +1,5 @@
 /*
-Copyright 2015 Workiva, LLC
+Copyright 2015 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package mock
 import (
 	"github.com/stretchr/testify/mock"
 
-	"github.com/Workiva/go-datastructures/batcher"
+	"github.com/ajaybodhe/go-datastructures/batcher"
 )
 
 var _ batcher.Batcher = new(Batcher)

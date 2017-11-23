@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package hilbert
 import (
 	"sort"
 
-	"github.com/Workiva/go-datastructures/rtree"
+	"github.com/ajaybodhe/go-datastructures/rtree"
 )
 
 type hilbert int64

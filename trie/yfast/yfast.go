@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -36,7 +36,10 @@ aid in multithreading these functions for performance optimization.
 */
 package yfast
 
-import "github.com/Workiva/go-datastructures/trie/xfast"
+import (
+	"github.com/ajaybodhe/go-datastructures/trie/xfast"
+	"math"
+)
 
 // YFastTrie implements all the methods available to the y-fast
 // trie datastructure.  The top half is composed of an x-fast trie
@@ -46,6 +49,14 @@ type YFastTrie struct {
 	num   uint64
 	xfast *xfast.XFastTrie
 	bits  uint8
+	maxBucketsSearchLimit uint64
+}
+
+func (yfast *YFastTrie) SetMaxBucketsSearchLimit(maxLimit uint64) {
+	yfast.maxBucketsSearchLimit = maxLimit
+	if yfast.maxBucketsSearchLimit == 0 {
+		yfast.maxBucketsSearchLimit = math.MaxUint64
+	}
 }
 
 func (yfast *YFastTrie) init(intType interface{}) {
@@ -64,6 +75,8 @@ func (yfast *YFastTrie) init(intType interface{}) {
 	}
 
 	yfast.xfast = xfast.New(intType)
+	//initialise to default value
+	yfast.maxBucketsSearchLimit = math.MaxUint64
 }
 
 // getBucketKey finds the largest possible value in this key's bucket.
@@ -206,34 +219,22 @@ func (yfast *YFastTrie) Successor(key uint64) Entry {
 }
 
 func (yfast *YFastTrie) predecessor(key uint64) Entry {
-	// harder case because our representative value in the
-	// x-fast trie is the a max
-	bundleKey := yfast.getBucketKey(key)
-	bundle := yfast.xfast.Predecessor(bundleKey)
-	if bundle == nil {
-		return nil
+	var i uint64
+	for bundleKey := yfast.getBucketKey(key);bundleKey >0 && i < yfast.maxBucketsSearchLimit; i, bundleKey = i+1, bundleKey-uint64(yfast.bits) {
+		bundle := yfast.xfast.Predecessor(bundleKey)
+		if bundle == nil {
+			
+			continue
+		}
+		ew := bundle.(*entriesWrapper)
+		entry, _ := ew.entries.predecessor(key)
+		if entry != nil {
+			
+			return entry
+		}
 	}
-
-	ew := bundle.(*entriesWrapper)
-	entry, _ := ew.entries.predecessor(key)
-	if entry != nil {
-		return entry
-	}
-
-	// it's possible we do exist somewhere earlier in the x-fast trie
-	bundle = yfast.xfast.Predecessor(bundleKey - 1)
-	if bundle == nil {
-		return nil
-	}
-
-	ew = bundle.(*entriesWrapper)
-
-	entry, _ = ew.entries.predecessor(key)
-	if entry == nil {
-		return nil
-	}
-
-	return entry
+	
+	return nil
 }
 
 // Predecessor returns an Entry with a key equal to or immediately

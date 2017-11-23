@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@ import (
 	"runtime"
 	"sync"
 
-	h "github.com/Workiva/go-datastructures/numerics/hilbert"
-	"github.com/Workiva/go-datastructures/rtree"
+	h "github.com/ajaybodhe/go-datastructures/numerics/hilbert"
+	"github.com/ajaybodhe/go-datastructures/rtree"
 )
 
 func getCenter(rect rtree.Rectangle) (int32, int32) {

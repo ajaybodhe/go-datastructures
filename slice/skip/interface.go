@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@ limitations under the License.
 
 package skip
 
-import "github.com/Workiva/go-datastructures/common"
+import "github.com/ajaybodhe/go-datastructures/common"
 
 // Iterator defines an interface that allows a consumer to iterate
 // all results of a query.  All values will be visited in-order.

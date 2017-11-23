@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ BenchmarkExecuteQuery-8	   				   10000	   1290732 ns/op
 */
 package palm
 
-import "github.com/Workiva/go-datastructures/common"
+import "github.com/ajaybodhe/go-datastructures/common"
 
 // BTree is the interface returned from this package's constructor.
 type BTree interface {

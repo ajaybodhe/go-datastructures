@@ -1,4 +1,4 @@
-package: github.com/Workiva/go-datastructures
+package: github.com/ajaybodhe/go-datastructures
 import:
 - package: github.com/satori/go.uuid
   version: ^1.1.0

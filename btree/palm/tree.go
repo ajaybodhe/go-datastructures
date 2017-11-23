@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/Workiva/go-datastructures/common"
-	"github.com/Workiva/go-datastructures/queue"
+	"github.com/ajaybodhe/go-datastructures/common"
+	"github.com/ajaybodhe/go-datastructures/queue"
 )
 
 type operation int

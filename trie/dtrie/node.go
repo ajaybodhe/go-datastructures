@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/Workiva/go-datastructures/bitarray"
+	"github.com/ajaybodhe/go-datastructures/bitarray"
 )
 
 type node struct {

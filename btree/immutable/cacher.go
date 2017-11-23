@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Workiva, LLC
+Copyright 2014 ajaybodhe, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Workiva/go-datastructures/futures"
+	"github.com/ajaybodhe/go-datastructures/futures"
 )
 
 // cacher provides a convenient construct for retrieving,
